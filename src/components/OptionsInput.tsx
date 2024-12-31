@@ -1,10 +1,13 @@
-import { useState } from "react";
 import { TextField, Button, IconButton, Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ComparatorInputs = () => {
-  const [options, setOptions] = useState([""]);
+interface OptionsInputProps {
+  advancePage: () => void;
+  options: string[];
+  setOptions: (options: string[]) => void;
+}
 
+const OptionsInput: React.FC<OptionsInputProps> = ({ setOptions, options, advancePage }) => {
   const handleAddNewOption = () => {
     setOptions([...options, ""]);
   };
@@ -22,7 +25,7 @@ const ComparatorInputs = () => {
   // Handle form submission
   const handleSubmit = () => {
     console.log("Submitted Strings:", options);
-    alert(`Submitted Strings: ${options.join(", ")}`);
+    advancePage();
   };
 
   return (
@@ -32,7 +35,7 @@ const ComparatorInputs = () => {
         <Stack key={index} direction="row" spacing={1} alignItems="center">
           <TextField
             fullWidth
-            label={`Option ${index + 1}`}
+            label={input ? "" : "New Option"} // Hide label when text is present
             variant="outlined"
             value={input}
             onChange={(e) => handleOptionChange(index, e.target.value)}
@@ -56,4 +59,4 @@ const ComparatorInputs = () => {
   );
 };
 
-export { ComparatorInputs };
+export { OptionsInput };
