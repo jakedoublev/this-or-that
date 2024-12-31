@@ -11,7 +11,7 @@ One tradeoff at a time, over and over, until the order is clear.
 
 Data never leaves your browser and does not save between refreshes, so your decision stays 100% private.
 
-## Tech
+## Tech Stack
 
 1. React
 2. TypeScript
